@@ -19,206 +19,138 @@
         /* Body styles */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
-            -webkit-touch-callout: none; /* Disable callout, image save panel (iOS) */
-            -webkit-text-size-adjust: none; /* Prevent font scaling in landscape */
-        }
-
-        /* Container */
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
+            background-color: #ffffff; /* Light background */
+            color: #000000; /* Dark text */
             padding: 20px;
         }
 
-        /* Header */
-        header {
+        h1 {
             text-align: center;
-            margin-bottom: 30px;
-        }
-
-        header h1 {
-            font-size: 28px;
+            font-size: 2rem;
             font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            color: #000000;
         }
 
-        /* Form styles */
-        .calculator label {
-            font-size: 18px;
-            font-weight: 500;
-            color: #444;
-            margin-bottom: 8px;
+        label {
             display: block;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: #000000;
         }
 
-        .calculator select,
-        .calculator input[type="number"] {
+        select, input[type="number"] {
             width: 100%;
             padding: 15px;
-            font-size: 18px;
+            font-size: 1.25rem;
             margin-bottom: 20px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            background-color: #fff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            background-color: #ffffff;
+            color: #000000;
         }
 
-        .calculator button {
+        button {
             width: 100%;
-            padding: 18px;
-            font-size: 20px;
+            padding: 15px;
+            font-size: 1.5rem;
             font-weight: 600;
-            color: #fff;
-            background-color: #007bff;
+            background-color: #007BFF; /* Blue button */
+            color: #ffffff;
             border: none;
-            border-radius: 12px;
-            margin-top: 10px;
+            border-radius: 8px;
             cursor: pointer;
+            margin-bottom: 20px;
         }
 
-        .calculator button:active {
+        button:hover {
             background-color: #0056b3;
         }
 
-        /* Results */
         .results {
-            margin-top: 30px;
-        }
-
-        .results h2 {
-            font-size: 24px;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 20px;
-            text-align: center;
+            margin-top: 20px;
         }
 
         .result-section {
             margin-bottom: 30px;
         }
 
-        .result-section h3 {
-            font-size: 20px;
+        .result-section h2 {
+            font-size: 1.75rem;
             font-weight: 600;
-            color: #333;
             margin-bottom: 15px;
+            color: #000000;
         }
 
-        .result-table {
-            width: 100%;
-            border-collapse: collapse;
+        .result-section ul {
+            list-style-type: none;
+            padding: 0;
         }
 
-        .result-table th,
-        .result-table td {
-            font-size: 18px;
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+        .result-section ul li {
+            font-size: 1.25rem;
+            padding: 10px;
+            background-color: #f8f9fa; /* Light grey */
+            border: 1px solid #000000;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            color: #000000;
         }
 
-        .result-table th {
-            background-color: #f0f0f0;
-            font-weight: 600;
+        .gap-settings p {
+            font-size: 1.25rem;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            color: #000000;
         }
 
-        /* Accessibility */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #121212;
-                color: #fff;
-            }
-
-            .calculator label,
-            .results h2,
-            .result-section h3 {
-                color: #fff;
-            }
-
-            .calculator select,
-            .calculator input[type="number"] {
-                background-color: #1e1e1e;
-                color: #fff;
-                border: 2px solid #555;
-            }
-
-            .calculator button {
-                background-color: #1a73e8;
-            }
-
-            .result-table th,
-            .result-table td {
-                border-bottom: 1px solid #444;
-            }
-
-            .result-table th {
-                background-color: #1e1e1e;
-            }
+        /* Make inputs larger for easy touch */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            margin: 0;
+            -webkit-appearance: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>the mbo folding manual: digitized</h1>
-        </header>
+    <h1>the mbo folding manual: digitized</h1>
 
-        <div class="calculator">
-            <label for="foldType">Select Fold Type:</label>
-            <select id="foldType">
-                <option value="bifold">Bifold (Parallel Fold, 4 Pages)</option>
-                <option value="trifold">Trifold (Accordion Fold, 6 Pages)</option>
-                <option value="zfold">Z-Fold (Parallel Fold, 6 Pages)</option>
-            </select>
+    <label for="foldType">Select Fold Type:</label>
+    <select id="foldType">
+        <option value="bifold">Bifold (Parallel Fold, 4 Pages)</option>
+        <option value="trifold">Trifold (Accordion Fold, 6 Pages)</option>
+        <option value="zfold">Z-Fold (Parallel Fold, 6 Pages)</option>
+    </select>
 
-            <label for="sheetLength">Sheet Length:</label>
-            <input type="number" id="sheetLength" placeholder="Enter sheet length">
+    <label for="sheetLength">Sheet Length:</label>
+    <input type="number" id="sheetLength" placeholder="Enter sheet length" min="0" step="any">
 
-            <label for="unit">Unit:</label>
-            <select id="unit">
-                <option value="inches">Inches</option>
-                <option value="mm">Millimeters</option>
-            </select>
+    <label for="unit">Unit:</label>
+    <select id="unit">
+        <option value="inches">Inches</option>
+        <option value="mm">Millimeters</option>
+    </select>
 
-            <button onclick="calculateSettings()">Calculate Settings</button>
+    <button onclick="calculateSettings()">Calculate Settings</button>
+
+    <div class="results" id="results" style="display: none;">
+        <div class="result-section">
+            <h2>Caliper Settings:</h2>
+            <ul id="caliperSettings"></ul>
         </div>
 
-        <div class="results" id="results" style="display: none;">
-            <h2>Calculated Settings</h2>
+        <div class="result-section">
+            <h2>Sheet Stop Positions:</h2>
+            <ul id="sheetStops"></ul>
+        </div>
 
-            <div class="result-section">
-                <h3>Caliper Settings:</h3>
-                <table class="result-table" id="caliperSettingsTable">
-                    <!-- Caliper settings will be inserted here -->
-                </table>
-            </div>
-
-            <div class="result-section">
-                <h3>Sheet Stop Positions:</h3>
-                <table class="result-table" id="sheetStopsTable">
-                    <!-- Sheet stop positions will be inserted here -->
-                </table>
-            </div>
-
-            <div class="result-section">
-                <h3>Estimated Gap Settings:</h3>
-                <table class="result-table">
-                    <tr>
-                        <th>Setting</th>
-                        <th>Value</th>
-                    </tr>
-                    <tr>
-                        <td>Set 1</td>
-                        <td id="gapSet1"></td>
-                    </tr>
-                    <tr>
-                        <td>Set 2</td>
-                        <td id="gapSet2"></td>
-                    </tr>
-                </table>
+        <div class="result-section">
+            <h2>Estimated Gap Settings:</h2>
+            <div class="gap-settings">
+                <p id="gapSetting"></p>
             </div>
         </div>
     </div>
@@ -276,8 +208,147 @@
 
             if (foldType === 'bifold') {
                 caliperSettings = [
-                    { caliper: 'Caliper 1', setting: 'Insert one (1) thickness of paper.' },
-                    { caliper: 'Caliper 2', setting: 'Insert two (2) thicknesses of paper.' },
-                    { caliper: 'Caliper 3', setting: 'Insert two (2) thicknesses of paper.' },
-                    { caliper: 'Caliper 4', setting: 'Insert two (2) thicknesses of paper.' },
-                    { caliper: 'Caliper 5', setting: 'Insert two (2) thicknesses of
+                    'Caliper 1: Insert one (1) thickness of paper.',
+                    'Caliper 2: Insert two (2) thicknesses of paper.',
+                    'Caliper 3: Insert two (2) thicknesses of paper.',
+                    'Caliper 4: Insert two (2) thicknesses of paper.',
+                    'Caliper 5: Insert two (2) thicknesses of paper.',
+                    'Caliper 6: Insert two (2) thicknesses of paper.'
+                ];
+
+                const stop1Decimal = sheetLength * 0.5;
+
+                sheetStops = [
+                    `Sheet Stop 1: Adjust to ${stop1Decimal.toFixed(2)} inches (${toNearestSixteenth(stop1Decimal)}) (50% of sheet length).`,
+                    'Sheet Stop 2: Set to deflector.',
+                    'Sheet Stop 3: Set to deflector.',
+                    'Sheet Stop 4: Set to deflector.'
+                ];
+            } else if (foldType === 'trifold') {
+                caliperSettings = [
+                    'Caliper 1: Insert one (1) thickness of paper.',
+                    'Caliper 2: Insert three (3) thicknesses of paper.',
+                    'Caliper 3: Insert three (3) thicknesses of paper.',
+                    'Caliper 4: Insert three (3) thicknesses of paper.',
+                    'Caliper 5: Insert three (3) thicknesses of paper.',
+                    'Caliper 6: Insert three (3) thicknesses of paper.'
+                ];
+
+                const stop1Decimal = sheetLength * (2/3);
+                const stop2Decimal = sheetLength * (1/3);
+
+                sheetStops = [
+                    `Sheet Stop 1: Adjust to ${stop1Decimal.toFixed(2)} inches (${toNearestSixteenth(stop1Decimal)}) (66% of sheet length).`,
+                    `Sheet Stop 2: Adjust to ${stop2Decimal.toFixed(2)} inches (${toNearestSixteenth(stop2Decimal)}) (33% of sheet length).`,
+                    'Sheet Stop 3: Set to deflector.',
+                    'Sheet Stop 4: Set to deflector.'
+                ];
+            } else if (foldType === 'zfold') {
+                caliperSettings = [
+                    'Caliper 1: Insert one (1) thickness of paper.',
+                    'Caliper 2: Insert three (3) thicknesses of paper.',
+                    'Caliper 3: Insert three (3) thicknesses of paper.',
+                    'Caliper 4: Insert three (3) thicknesses of paper.',
+                    'Caliper 5: Insert three (3) thicknesses of paper.',
+                    'Caliper 6: Insert three (3) thicknesses of paper.'
+                ];
+
+                const stop1Decimal = sheetLength * (1/3);
+                const stop3Decimal = sheetLength * (1/3);
+
+                sheetStops = [
+                    `Sheet Stop 1: Adjust to ${stop1Decimal.toFixed(2)} inches (${toNearestSixteenth(stop1Decimal)}) (33% of sheet length).`,
+                    'Sheet Stop 2: Set to deflector.',
+                    `Sheet Stop 3: Adjust to ${stop3Decimal.toFixed(2)} inches (${toNearestSixteenth(stop3Decimal)}) (33% of sheet length).`,
+                    'Sheet Stop 4: Set to deflector.'
+                ];
+            }
+
+            // Display results
+            document.getElementById('caliperSettings').innerHTML = caliperSettings.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('sheetStops').innerHTML = sheetStops.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('gapSetting').innerHTML = `
+                Set 1: ${gapSetting.set1.toFixed(2)}<br>
+                Set 2: ${gapSetting.set2.toFixed(2)}
+            `;
+
+            document.getElementById('results').style.display = 'block';
+        }
+
+        // Function to interpolate gap settings
+        function interpolateGapSettings(sheetLength) {
+            const table = gapSettingsTable;
+            let lower = null;
+            let upper = null;
+
+            // Find the two closest entries in the table
+            for (let i = 0; i < table.length; i++) {
+                if (sheetLength === table[i].sheetLength) {
+                    return { set1: table[i].set1, set2: table[i].set2 };
+                } else if (sheetLength < table[i].sheetLength) {
+                    upper = table[i];
+                    lower = table[i - 1] || table[0];
+                    break;
+                }
+            }
+
+            if (!upper) {
+                // Sheet length is larger than any in the table
+                lower = table[table.length - 2];
+                upper = table[table.length - 1];
+            }
+
+            // Linear interpolation
+            const ratio = (sheetLength - lower.sheetLength) / (upper.sheetLength - lower.sheetLength);
+            const set1 = lower.set1 + ratio * (upper.set1 - lower.set1);
+            const set2 = lower.set2 + ratio * (upper.set2 - lower.set2);
+
+            return { set1, set2 };
+        }
+
+        // Function to convert decimal inches to nearest 1/16 inch
+        function toNearestSixteenth(value) {
+            const inches = Math.floor(value);
+            const fraction = value - inches;
+            const sixteen = Math.round(fraction * 16);
+            let numerator = sixteen;
+            const denominator = 16;
+
+            // Simplify the fraction
+            function gcd(a, b) {
+                if (b === 0) return a;
+                return gcd(b, a % b);
+            }
+
+            const gcdValue = gcd(numerator, denominator);
+            numerator /= gcdValue;
+            const simplifiedDenominator = denominator / gcdValue;
+
+            let fractionString = '';
+            if (numerator === 0) {
+                fractionString = '';
+            } else if (simplifiedDenominator === 1) {
+                // Whole number
+                fractionString = '';
+                inches += 1;
+            } else {
+                fractionString = `${numerator}/${simplifiedDenominator}`;
+            }
+
+            let result = '';
+            if (inches > 0 && fractionString !== '') {
+                result = `${inches} ${fractionString}"`;
+            } else if (inches > 0) {
+                result = `${inches}"`;
+            } else if (fractionString !== '') {
+                result = `${fractionString}"`;
+            } else {
+                result = '0"';
+            }
+
+            return result;
+        }
+    </script>
+
+</body>
+</html>
