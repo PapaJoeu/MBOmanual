@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         /* Reset styles */
@@ -18,18 +18,18 @@
 
         /* Body styles */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff; /* Light background */
-            color: #000000; /* Dark text */
+            font-family: 'Roboto', sans-serif;
+            background-color: #F5DEB3; /* Wheat */
+            color: #000000; /* Black text */
             padding: 20px;
         }
 
         h1 {
             text-align: center;
             font-size: 2rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 20px;
-            color: #000000;
+            color: #8B4513; /* SaddleBrown */
         }
 
         label {
@@ -44,9 +44,9 @@
             padding: 15px;
             font-size: 1.25rem;
             margin-bottom: 20px;
-            border: 2px solid #000000;
+            border: 2px solid #8B4513; /* SaddleBrown */
             border-radius: 8px;
-            background-color: #ffffff;
+            background-color: #FFF8DC; /* Cornsilk */
             color: #000000;
         }
 
@@ -54,9 +54,9 @@
             width: 100%;
             padding: 15px;
             font-size: 1.5rem;
-            font-weight: 600;
-            background-color: #007BFF; /* Blue button */
-            color: #ffffff;
+            font-weight: 700;
+            background-color: #DEB887; /* BurlyWood */
+            color: #000000;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -64,7 +64,7 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #D2B48C; /* Tan */
         }
 
         .results {
@@ -77,31 +77,36 @@
 
         .result-section h2 {
             font-size: 1.75rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 15px;
-            color: #000000;
+            color: #8B4513; /* SaddleBrown */
         }
 
-        .result-section ul {
-            list-style-type: none;
-            padding: 0;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
 
-        .result-section ul li {
-            font-size: 1.25rem;
+        th, td {
+            border: 1px solid #8B4513;
             padding: 10px;
-            background-color: #f8f9fa; /* Light grey */
-            border: 1px solid #000000;
-            border-radius: 8px;
-            margin-bottom: 10px;
+            text-align: left;
+            font-size: 1.25rem;
+            background-color: #FFF8DC; /* Cornsilk */
             color: #000000;
+        }
+
+        th {
+            background-color: #DEB887; /* BurlyWood */
+            font-weight: 700;
         }
 
         .gap-settings p {
             font-size: 1.25rem;
             padding: 10px;
-            background-color: #f8f9fa;
-            border: 1px solid #000000;
+            background-color: #FFF8DC; /* Cornsilk */
+            border: 1px solid #8B4513;
             border-radius: 8px;
             color: #000000;
         }
@@ -139,12 +144,25 @@
     <div class="results" id="results" style="display: none;">
         <div class="result-section">
             <h2>Caliper Settings:</h2>
-            <ul id="caliperSettings"></ul>
+            <table>
+                <tr>
+                    <th>Caliper</th>
+                    <th>Sheets Thick</th>
+                </tr>
+                <tbody id="caliperSettings"></tbody>
+            </table>
         </div>
 
         <div class="result-section">
             <h2>Sheet Stop Positions:</h2>
-            <ul id="sheetStops"></ul>
+            <table>
+                <tr>
+                    <th>Stopper Number</th>
+                    <th>Measurement (inches)</th>
+                    <th>Simplified Measurement</th>
+                </tr>
+                <tbody id="sheetStops"></tbody>
+            </table>
         </div>
 
         <div class="result-section">
@@ -202,74 +220,96 @@
             // Calculate Gap Settings using interpolation
             const gapSetting = interpolateGapSettings(sheetLength);
 
+            // Round up to nearest whole number
+            const gapSet1 = Math.ceil(gapSetting.set1);
+            const gapSet2 = Math.ceil(gapSetting.set2);
+
             // Prepare results
             let caliperSettings = [];
             let sheetStops = [];
 
             if (foldType === 'bifold') {
                 caliperSettings = [
-                    'Caliper 1: Insert one (1) thickness of paper.',
-                    'Caliper 2: Insert two (2) thicknesses of paper.',
-                    'Caliper 3: Insert two (2) thicknesses of paper.',
-                    'Caliper 4: Insert two (2) thicknesses of paper.',
-                    'Caliper 5: Insert two (2) thicknesses of paper.',
-                    'Caliper 6: Insert two (2) thicknesses of paper.'
+                    { caliper: 'Caliper 1', sheetsThick: '1' },
+                    { caliper: 'Caliper 2', sheetsThick: '2' },
+                    { caliper: 'Caliper 3', sheetsThick: '2' },
+                    { caliper: 'Caliper 4', sheetsThick: '2' },
+                    { caliper: 'Caliper 5', sheetsThick: '2' },
+                    { caliper: 'Caliper 6', sheetsThick: '2' }
                 ];
 
                 const stop1Decimal = sheetLength * 0.5;
+                const stop1Simplified = toNearestSixteenth(stop1Decimal);
 
                 sheetStops = [
-                    `Sheet Stop 1: Adjust to ${stop1Decimal.toFixed(2)} inches (${toNearestSixteenth(stop1Decimal)}) (50% of sheet length).`,
-                    'Sheet Stop 2: Set to deflector.',
-                    'Sheet Stop 3: Set to deflector.',
-                    'Sheet Stop 4: Set to deflector.'
+                    { stopper: 'Sheet Stop 1', measurement: stop1Decimal.toFixed(2), simplified: stop1Simplified },
+                    { stopper: 'Sheet Stop 2', measurement: 'Deflector', simplified: '' },
+                    { stopper: 'Sheet Stop 3', measurement: 'Deflector', simplified: '' },
+                    { stopper: 'Sheet Stop 4', measurement: 'Deflector', simplified: '' }
                 ];
             } else if (foldType === 'trifold') {
                 caliperSettings = [
-                    'Caliper 1: Insert one (1) thickness of paper.',
-                    'Caliper 2: Insert three (3) thicknesses of paper.',
-                    'Caliper 3: Insert three (3) thicknesses of paper.',
-                    'Caliper 4: Insert three (3) thicknesses of paper.',
-                    'Caliper 5: Insert three (3) thicknesses of paper.',
-                    'Caliper 6: Insert three (3) thicknesses of paper.'
+                    { caliper: 'Caliper 1', sheetsThick: '1' },
+                    { caliper: 'Caliper 2', sheetsThick: '3' },
+                    { caliper: 'Caliper 3', sheetsThick: '3' },
+                    { caliper: 'Caliper 4', sheetsThick: '3' },
+                    { caliper: 'Caliper 5', sheetsThick: '3' },
+                    { caliper: 'Caliper 6', sheetsThick: '3' }
                 ];
 
                 const stop1Decimal = sheetLength * (2/3);
                 const stop2Decimal = sheetLength * (1/3);
+                const stop1Simplified = toNearestSixteenth(stop1Decimal);
+                const stop2Simplified = toNearestSixteenth(stop2Decimal);
 
                 sheetStops = [
-                    `Sheet Stop 1: Adjust to ${stop1Decimal.toFixed(2)} inches (${toNearestSixteenth(stop1Decimal)}) (66% of sheet length).`,
-                    `Sheet Stop 2: Adjust to ${stop2Decimal.toFixed(2)} inches (${toNearestSixteenth(stop2Decimal)}) (33% of sheet length).`,
-                    'Sheet Stop 3: Set to deflector.',
-                    'Sheet Stop 4: Set to deflector.'
+                    { stopper: 'Sheet Stop 1', measurement: stop1Decimal.toFixed(2), simplified: stop1Simplified },
+                    { stopper: 'Sheet Stop 2', measurement: stop2Decimal.toFixed(2), simplified: stop2Simplified },
+                    { stopper: 'Sheet Stop 3', measurement: 'Deflector', simplified: '' },
+                    { stopper: 'Sheet Stop 4', measurement: 'Deflector', simplified: '' }
                 ];
             } else if (foldType === 'zfold') {
                 caliperSettings = [
-                    'Caliper 1: Insert one (1) thickness of paper.',
-                    'Caliper 2: Insert three (3) thicknesses of paper.',
-                    'Caliper 3: Insert three (3) thicknesses of paper.',
-                    'Caliper 4: Insert three (3) thicknesses of paper.',
-                    'Caliper 5: Insert three (3) thicknesses of paper.',
-                    'Caliper 6: Insert three (3) thicknesses of paper.'
+                    { caliper: 'Caliper 1', sheetsThick: '1' },
+                    { caliper: 'Caliper 2', sheetsThick: '3' },
+                    { caliper: 'Caliper 3', sheetsThick: '3' },
+                    { caliper: 'Caliper 4', sheetsThick: '3' },
+                    { caliper: 'Caliper 5', sheetsThick: '3' },
+                    { caliper: 'Caliper 6', sheetsThick: '3' }
                 ];
 
                 const stop1Decimal = sheetLength * (1/3);
                 const stop3Decimal = sheetLength * (1/3);
+                const stop1Simplified = toNearestSixteenth(stop1Decimal);
+                const stop3Simplified = toNearestSixteenth(stop3Decimal);
 
                 sheetStops = [
-                    `Sheet Stop 1: Adjust to ${stop1Decimal.toFixed(2)} inches (${toNearestSixteenth(stop1Decimal)}) (33% of sheet length).`,
-                    'Sheet Stop 2: Set to deflector.',
-                    `Sheet Stop 3: Adjust to ${stop3Decimal.toFixed(2)} inches (${toNearestSixteenth(stop3Decimal)}) (33% of sheet length).`,
-                    'Sheet Stop 4: Set to deflector.'
+                    { stopper: 'Sheet Stop 1', measurement: stop1Decimal.toFixed(2), simplified: stop1Simplified },
+                    { stopper: 'Sheet Stop 2', measurement: 'Deflector', simplified: '' },
+                    { stopper: 'Sheet Stop 3', measurement: stop3Decimal.toFixed(2), simplified: stop3Simplified },
+                    { stopper: 'Sheet Stop 4', measurement: 'Deflector', simplified: '' }
                 ];
             }
 
             // Display results
-            document.getElementById('caliperSettings').innerHTML = caliperSettings.map(item => `<li>${item}</li>`).join('');
-            document.getElementById('sheetStops').innerHTML = sheetStops.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('caliperSettings').innerHTML = caliperSettings.map(item => `
+                <tr>
+                    <td>${item.caliper}</td>
+                    <td>${item.sheetsThick}</td>
+                </tr>
+            `).join('');
+
+            document.getElementById('sheetStops').innerHTML = sheetStops.map(item => `
+                <tr>
+                    <td>${item.stopper}</td>
+                    <td>${item.measurement}</td>
+                    <td>${item.simplified}</td>
+                </tr>
+            `).join('');
+
             document.getElementById('gapSetting').innerHTML = `
-                Set 1: ${gapSetting.set1.toFixed(2)}<br>
-                Set 2: ${gapSetting.set2.toFixed(2)}
+                Set 1: ${gapSet1}<br>
+                Set 2: ${gapSet2}
             `;
 
             document.getElementById('results').style.display = 'block';
