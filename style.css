@@ -1,108 +1,155 @@
-/* Reset styles */
+/*-------------------------------------------------------------
+  Global Reset Styles
+  - Resets default browser styles for consistency across browsers
+-------------------------------------------------------------*/
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Body styles */
+/*-------------------------------------------------------------
+  Base Styles
+  - General styles for the body and headings
+-------------------------------------------------------------*/
 body {
+    /* Sets the default font and background for the body */
     font-family: 'Roboto', sans-serif;
-    background-color: #F5DEB3; /* Wheat */
-    color: #000000; /* Black text */
-    padding: 20px;
+    background-color: #F5DEB3; /* Wheat background */
+    color: #000000;            /* Black text color */
+    padding: 20px;             /* Padding around the content */
 }
 
 h1 {
+    /* Styles for the main heading */
     text-align: center;
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 20px;
-    color: #8B4513; /* SaddleBrown */
+    color: #8B4513; /* SaddleBrown text color */
 }
 
+/*-------------------------------------------------------------
+  Form Labels
+  - Styles for the labels of input fields
+-------------------------------------------------------------*/
 label {
-    display: block;
+    display: block;           /* Ensures labels are on their own line */
     font-size: 1.25rem;
     margin-bottom: 10px;
-    color: #000000;
+    color: #000000;           /* Black text color */
 }
 
-select, input[type="number"] {
-    width: 100%;
+/*-------------------------------------------------------------
+  Input Fields and Select Dropdowns
+  - Styles for text inputs and select elements
+-------------------------------------------------------------*/
+select,
+input[type="number"] {
+    width: 100%;              /* Full width of the container */
     padding: 15px;
     font-size: 1.25rem;
     margin-bottom: 20px;
-    border: 2px solid #8B4513; /* SaddleBrown */
-    border-radius: 8px;
-    background-color: #FFF8DC; /* Cornsilk */
-    color: #000000;
+    border: 2px solid #8B4513; /* SaddleBrown border color */
+    border-radius: 8px;        /* Rounded corners */
+    background-color: #FFF8DC; /* Cornsilk background color */
+    color: #000000;            /* Black text color */
 }
 
-button {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    background-color: #DEB887; /* BurlyWood */
-    color: #000000;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-button:hover {
-    background-color: #D2B48C; /* Tan */
-}
-
-.results {
-    margin-top: 20px;
-}
-
-.result-section {
-    margin-bottom: 30px;
-}
-
-.result-section h2 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: #8B4513; /* SaddleBrown */
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-th, td {
-    border: 1px solid #8B4513;
-    padding: 10px;
-    text-align: left;
-    font-size: 1.25rem;
-    background-color: #FFF8DC; /* Cornsilk */
-    color: #000000;
-}
-
-th {
-    background-color: #DEB887; /* BurlyWood */
-    font-weight: 700;
-}
-
-.gap-settings p {
-    font-size: 1.25rem;
-    padding: 10px;
-    background-color: #FFF8DC; /* Cornsilk */
-    border: 1px solid #8B4513;
-    border-radius: 8px;
-    color: #000000;
-}
-
-/* Make inputs larger for easy touch */
+/* Removes the default number input spinners in WebKit browsers */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
     -webkit-appearance: none;
+}
+
+/*-------------------------------------------------------------
+  Button Styles
+  - Styles for the 'Calculate Settings' button
+-------------------------------------------------------------*/
+button {
+    width: 100%;               /* Full width of the container */
+    padding: 15px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-color: #DEB887; /* BurlyWood background color */
+    color: #000000;             /* Black text color */
+    border: none;               /* No border */
+    border-radius: 8px;         /* Rounded corners */
+    cursor: pointer;            /* Pointer cursor on hover */
+    margin-bottom: 20px;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #D2B48C; /* Tan background color on hover */
+}
+
+/*-------------------------------------------------------------
+  Results Section
+  - Styles for the container that displays the results
+-------------------------------------------------------------*/
+.results {
+    margin-top: 20px;          /* Space above the results section */
+}
+
+.result-section {
+    margin-bottom: 30px;       /* Space below each result section */
+}
+
+.result-section h2 {
+    /* Styles for the subheadings in the results section */
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #8B4513; /* SaddleBrown text color */
+}
+
+/*-------------------------------------------------------------
+  Table Styles
+  - Styles for the tables displaying calculated data
+-------------------------------------------------------------*/
+table {
+    width: 100%;               /* Full width of the container */
+    border-collapse: collapse; /* Removes space between table cells */
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    /* Styles for table headers and data cells */
+    border: 1px solid #8B4513;  /* SaddleBrown border color */
+    padding: 10px;
+    text-align: left;
+    font-size: 1.25rem;
+    background-color: #FFF8DC;  /* Cornsilk background color */
+    color: #000000;             /* Black text color */
+}
+
+th {
+    background-color: #DEB887; /* BurlyWood background color for headers */
+    font-weight: 700;
+}
+
+/*-------------------------------------------------------------
+  Gap Settings Paragraph
+  - Styles for the paragraph displaying gap settings
+-------------------------------------------------------------*/
+.gap-settings p {
+    font-size: 1.25rem;
+    padding: 10px;
+    background-color: #FFF8DC; /* Cornsilk background color */
+    border: 1px solid #8B4513; /* SaddleBrown border color */
+    border-radius: 8px;         /* Rounded corners */
+    color: #000000;             /* Black text color */
+}
+
+/*-------------------------------------------------------------
+  Miscellaneous Styles
+  - Additional styles for specific elements or states
+-------------------------------------------------------------*/
+/* Ensures a consistent touch-friendly size for number inputs */
+input[type="number"] {
+    -webkit-appearance: none;   /* Removes default styling in WebKit browsers */
+    -moz-appearance: textfield; /* Removes default styling in Firefox */
 }
