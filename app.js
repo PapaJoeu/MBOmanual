@@ -54,31 +54,31 @@ function calculateSettings() {
 
     if (foldType === 'bifold') {
         caliperSettings = [
-            { caliper: 'Caliper 1', sheetsThick: '1' },
-            { caliper: 'Caliper 2', sheetsThick: '2' },
-            { caliper: 'Caliper 3', sheetsThick: '2' },
-            { caliper: 'Caliper 4', sheetsThick: '2' },
-            { caliper: 'Caliper 5', sheetsThick: '2' },
-            { caliper: 'Caliper 6', sheetsThick: '2' }
+            { caliper: '1', sheetsThick: '1' },
+            { caliper: '2', sheetsThick: '2' },
+            { caliper: '3', sheetsThick: '2' },
+            { caliper: '4', sheetsThick: '2' },
+            { caliper: '5', sheetsThick: '2' },
+            { caliper: '6', sheetsThick: '2' }
         ];
 
         const stop1Decimal = sheetLength * 0.5;
         const stop1Simplified = toNearestSixteenth(stop1Decimal);
 
         sheetStops = [
-            { stopper: 'Sheet Stop 1', measurement: stop1Decimal.toFixed(2), simplified: stop1Simplified },
-            { stopper: 'Sheet Stop 2', measurement: 'Deflector', simplified: '' },
-            { stopper: 'Sheet Stop 3', measurement: 'Deflector', simplified: '' },
-            { stopper: 'Sheet Stop 4', measurement: 'Deflector', simplified: '' }
+            { stopper: '1', measurement: stop1Decimal.toFixed(2), simplified: stop1Simplified },
+            { stopper: '2', measurement: 'Deflector', simplified: '' },
+            { stopper: '3', measurement: 'Deflector', simplified: '' },
+            { stopper: '4', measurement: 'Deflector', simplified: '' }
         ];
     } else if (foldType === 'trifold') {
         caliperSettings = [
-            { caliper: 'Caliper 1', sheetsThick: '1' },
-            { caliper: 'Caliper 2', sheetsThick: '3' },
-            { caliper: 'Caliper 3', sheetsThick: '3' },
-            { caliper: 'Caliper 4', sheetsThick: '3' },
-            { caliper: 'Caliper 5', sheetsThick: '3' },
-            { caliper: 'Caliper 6', sheetsThick: '3' }
+            { caliper: '1', sheetsThick: '1' },
+            { caliper: '2', sheetsThick: '1' },
+            { caliper: '3', sheetsThick: '3' },
+            { caliper: '4', sheetsThick: '3' },
+            { caliper: '5', sheetsThick: '3' },
+            { caliper: '6', sheetsThick: '3' }
         ];
 
         const stop1Decimal = sheetLength * (2/3);
@@ -87,31 +87,30 @@ function calculateSettings() {
         const stop2Simplified = toNearestSixteenth(stop2Decimal);
 
         sheetStops = [
-            { stopper: 'Sheet Stop 1', measurement: stop1Decimal.toFixed(2), simplified: stop1Simplified },
-            { stopper: 'Sheet Stop 2', measurement: stop2Decimal.toFixed(2), simplified: stop2Simplified },
-            { stopper: 'Sheet Stop 3', measurement: 'Deflector', simplified: '' },
-            { stopper: 'Sheet Stop 4', measurement: 'Deflector', simplified: '' }
+            { stopper: '1', measurement: stop1Decimal.toFixed(2), simplified: stop1Simplified },
+            { stopper: '2', measurement: stop2Decimal.toFixed(2), simplified: stop2Simplified },
+            { stopper: '3', measurement: 'Deflector', simplified: '' },
+            { stopper: '4', measurement: 'Deflector', simplified: '' }
         ];
     } else if (foldType === 'zfold') {
         caliperSettings = [
-            { caliper: 'Caliper 1', sheetsThick: '1' },
-            { caliper: 'Caliper 2', sheetsThick: '3' },
-            { caliper: 'Caliper 3', sheetsThick: '3' },
-            { caliper: 'Caliper 4', sheetsThick: '3' },
-            { caliper: 'Caliper 5', sheetsThick: '3' },
-            { caliper: 'Caliper 6', sheetsThick: '3' }
+            { caliper: '1', sheetsThick: '1' },
+            { caliper: '2', sheetsThick: '1' },
+            { caliper: '3', sheetsThick: '3' },
+            { caliper: '4', sheetsThick: '3' },
+            { caliper: '5', sheetsThick: '3' },
+            { caliper: '6', sheetsThick: '3' }
         ];
 
         const stop1Decimal = sheetLength * (1/3);
         const stop3Decimal = sheetLength * (1/3);
         const stop1Simplified = toNearestSixteenth(stop1Decimal);
         const stop3Simplified = toNearestSixteenth(stop3Decimal);
-
         sheetStops = [
-            { stopper: 'Sheet Stop 1', measurement: stop1Decimal.toFixed(2), simplified: stop1Simplified },
-            { stopper: 'Sheet Stop 2', measurement: 'Deflector', simplified: '' },
-            { stopper: 'Sheet Stop 3', measurement: stop3Decimal.toFixed(2), simplified: stop3Simplified },
-            { stopper: 'Sheet Stop 4', measurement: 'Deflector', simplified: '' }
+            { stopper: '1', measurement: stop1Decimal.toFixed(2), simplified: stop1Simplified },
+            { stopper: '2', measurement: 'Deflector', simplified: '' },
+            { stopper: '3', measurement: stop3Decimal.toFixed(2), simplified: stop3Simplified },
+            { stopper: '4', measurement: 'Deflector', simplified: '' }
         ];
     }
 
